@@ -17,13 +17,18 @@ class PaymentController extends Controller
     {
         $payments = Payment::with('student')
             ->when($request->filled('search'), function ($query) use ($request) {
-                $query->where('schedule', 'like', '%'.$request->search.'%')
-                    ->orWhere('amount', 'like', '%'.$request->search.'%')
-                    ->orWhere('payment_date', 'like', '%'.$request->search.'%');
+                $query->where('schedule', 'ilike', '%'.$request->search.'%')
+                    ->orWhere('amount', 'ilike', '%'.$request->search.'%')
+                    ->orWhere('payment_date', 'ilike', '%'.$request->search.'%')
+                    ->orWhere('number', 'ilike', '%'.$request->search.'%')
+                    ->orWhereHas('student', function ($query) use ($request) {
+                        $query->where('name', 'ilike', '%'.$request->search.'%')
+                            ->orWhere('email', 'ilike', '%'.$request->search.'%');
+                    });
             })
             ->paginate();
 
-        $data = PaymentData::collection($payments);
+        $data = PaymentData::collection($payments)->include('student');
 
         return $this->sendJsonResponse($data);
     }
