@@ -4,21 +4,21 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Student;
+use App\Models\Course;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class StudentSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('students')->truncate();
+        DB::table('courses')->truncate();
 
         DB::transaction(function () {
-            Student::factory()->count(20)->create();
+            Course::factory()->count(20)->create();
         });
     }
 }

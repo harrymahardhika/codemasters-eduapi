@@ -10,7 +10,7 @@ use function Pest\Laravel\assertSoftDeleted;
 
 it('can get payments', function () {
     $admin = createUser();
-    $payments = \App\Models\Payment::factory()->count(10)->create();
+    $payments = \App\Models\Payment::factory()->count(5)->create();
 
     $respose = actingAs($admin)
         ->getJson(route('api.payments.index'))
