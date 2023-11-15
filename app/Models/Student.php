@@ -20,6 +20,7 @@ class Student extends Model
         'phone_number',
         'enroll_number',
         'admission_date',
+        'image',
     ];
 
     protected static function boot(): void

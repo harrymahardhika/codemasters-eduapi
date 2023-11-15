@@ -43,8 +43,9 @@ class StudentController extends Controller
         ]);
 
         dispatch_sync(new SaveStudent(
-            new Student(),
-            StudentData::from($request->all())
+            student: new Student(),
+            data: StudentData::from($request->all()),
+            image: $request->file('image'),
         ));
 
         return $this->sendJsonResponse([
@@ -62,8 +63,9 @@ class StudentController extends Controller
         ]);
 
         dispatch_sync(new SaveStudent(
-            $student,
-            StudentData::from($request->all())
+            student: $student,
+            data: StudentData::from($request->all()),
+            image: $request->file('image'),
         ));
 
         return $this->sendJsonResponse([

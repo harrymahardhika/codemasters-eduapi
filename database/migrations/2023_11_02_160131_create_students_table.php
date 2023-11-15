@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('enroll_number');
             $table->date('admission_date');
+            $table->string('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
