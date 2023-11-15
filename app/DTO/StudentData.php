@@ -19,6 +19,7 @@ class StudentData extends Data
         public string $phone_number,
         public ?string $enroll_number,
         public string $admission_date,
+        public ?string $image_url,
         #[DataCollectionOf(PaymentData::class)]
         public DataCollection|Lazy|null $payments,
     ) {
@@ -33,6 +34,7 @@ class StudentData extends Data
             phone_number: $student->phone_number,
             enroll_number: $student->enroll_number,
             admission_date: $student->admission_date,
+            image_url: $student->image ? asset('storage/'.$student->image) : null,
             payments: Lazy::create(fn () => PaymentData::collection($student->payments)),
         );
     }
