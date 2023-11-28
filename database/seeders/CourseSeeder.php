@@ -18,7 +18,21 @@ class CourseSeeder extends Seeder
         DB::table('courses')->truncate();
 
         DB::transaction(function () {
-            Course::factory()->count(20)->create();
+            $courses = json_decode(file_get_contents(resource_path('courses.json')));
+
+            foreach ($courses as $course) {
+                Course::factory()->create([
+                    'title' => $course->title,
+                    'description' => $course->description,
+                    'code' => $course->code,
+                    'credits' => $course->credits,
+                    'instructor' => $course->instructor,
+                    'department' => $course->department,
+                    'location' => $course->location,
+                    'enrollment_limit' => $course->enrollment_limit,
+                    'fee' => $course->fee,
+                ]);
+            }
         });
     }
 }

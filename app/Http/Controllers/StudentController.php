@@ -39,18 +39,22 @@ class StudentController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:students,email',
             'phone_number' => 'required|string',
-            'admission_date' => 'required|date',
+            'admission_date' => 'required|date_format:Y-m-d',
         ]);
 
-        dispatch_sync(new SaveStudent(
-            student: new Student(),
-            data: StudentData::from($request->all()),
-            image: $request->file('image'),
-        ));
+        try {
+            dispatch_sync(new SaveStudent(
+                student: new Student(),
+                data: StudentData::from($request->all()),
+                image: $request->file('image'),
+            ));
 
-        return $this->sendJsonResponse([
-            'message' => __('app.data_created', ['data' => __('app.student')]),
-        ]);
+            return $this->sendJsonResponse([
+                'message' => __('app.data_created', ['data' => __('app.student')]),
+            ]);
+        } catch (\Throwable $throwable) {
+            throw new JsonResponseException($throwable->getMessage(), 400);
+        }
     }
 
     public function update(Request $request, Student $student): JsonResponse
@@ -59,18 +63,22 @@ class StudentController extends Controller
             'name' => 'required|string',
             'email' => 'required|email|unique:students,email,'.$student->id,
             'phone_number' => 'required|string',
-            'admission_date' => 'required|date',
+            'admission_date' => 'required|date_format:Y-m-d',
         ]);
 
-        dispatch_sync(new SaveStudent(
-            student: $student,
-            data: StudentData::from($request->all()),
-            image: $request->file('image'),
-        ));
+        try {
+            dispatch_sync(new SaveStudent(
+                student: $student,
+                data: StudentData::from($request->all()),
+                image: $request->file('image'),
+            ));
 
-        return $this->sendJsonResponse([
-            'message' => __('app.data_updated', ['data' => __('app.student')]),
-        ]);
+            return $this->sendJsonResponse([
+                'message' => __('app.data_updated', ['data' => __('app.student')]),
+            ]);
+        } catch (\Throwable $throwable) {
+            throw new JsonResponseException($throwable->getMessage(), 400);
+        }
     }
 
     public function destroy(Student $student): JsonResponse

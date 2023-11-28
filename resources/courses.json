@@ -1,0 +1,123 @@
+[
+  {
+    "title": "React Native Development",
+    "description": "Building mobile applications using React Native framework.",
+    "code": "RN101",
+    "credits": 4,
+    "instructor": "Pandy",
+    "department": "Codemaster",
+    "location": "Ideazone",
+    "enrollment_limit": 25,
+    "fee": 2000000
+  },
+  {
+    "title": "React JS Fundamentals",
+    "description": "Mastering the fundamentals of React JS for web development.",
+    "code": "REACT101",
+    "credits": 3,
+    "instructor": "Pandy",
+    "department": "Codemaster",
+    "location": "Ideazone",
+    "enrollment_limit": 30,
+    "fee": 1800000
+  },
+  {
+    "title": "Express JS and Node.js",
+    "description": "Learn to build web applications with Express JS and Node.js.",
+    "code": "EXPRESS200",
+    "credits": 3,
+    "instructor": "Harry Mau 🐯️",
+    "department": "Codemaster",
+    "location": "Ideazone",
+    "enrollment_limit": 20,
+    "fee": 150
+  },
+  {
+    "title": "Chakra UI Design",
+    "description": "Designing modern user interfaces with Chakra UI.",
+    "code": "CHAKRA301",
+    "credits": 3,
+    "instructor": "Pandy",
+    "department": "Codemaster",
+    "location": "Ideazone",
+    "enrollment_limit": 15,
+    "fee": 2500000
+  },
+  {
+    "title": "Introduction to Computer Science",
+    "description": "An introductory course covering the basics of computer science and programming.",
+    "code": "CS101",
+    "credits": 3,
+    "instructor": "Harry Mau 🐯️",
+    "department": "Computer Science",
+    "location": "Room 101",
+    "enrollment_limit": 30,
+    "fee": 150
+  },
+  {
+    "title": "English Composition",
+    "description": "Developing writing skills and effective communication in English.",
+    "code": "ENG201",
+    "credits": 4,
+    "instructor": "Harry Mau 🐯️",
+    "department": "English",
+    "location": "Room 203",
+    "enrollment_limit": 25,
+    "fee": 100
+  },
+  {
+    "title": "Mathematics for Business",
+    "description": "Fundamental mathematics concepts applicable to business scenarios.",
+    "code": "MATH220",
+    "credits": 3,
+    "instructor": "Harry Mau 🐯️",
+    "department": "Mathematics",
+    "location": "Room 105",
+    "enrollment_limit": 35,
+    "fee": 120
+  },
+  {
+    "title": "Introduction to Computer Science",
+    "description": "An introductory course covering the basics of computer science and programming.",
+    "code": "CS101",
+    "credits": 3,
+    "instructor": "Prof. Smith",
+    "department": "Computer Science",
+    "location": "Room 101",
+    "enrollment_limit": 30,
+    "fee": 150
+  },
+  {
+    "title": "English Composition",
+    "description": "Developing writing skills and effective communication in English.",
+    "code": "ENG201",
+    "credits": 4,
+    "instructor": "Dr. Johnson",
+    "department": "English",
+    "location": "Room 203",
+    "enrollment_limit": 25,
+    "fee": 100
+  },
+  {
+    "title": "Mathematics for Business",
+    "description": "Fundamental mathematics concepts applicable to business scenarios.",
+    "code": "MATH220",
+    "credits": 3,
+    "instructor": "Prof. Davis",
+    "department": "Mathematics",
+    "location": "Room 105",
+    "enrollment_limit": 35,
+    "fee": 120
+  },
+  {
+    "title": "History of Art",
+    "description": "Exploring the evolution of art throughout history.",
+    "code": "ART301",
+    "credits": 3,
+    "instructor": "Dr. Martinez",
+    "department": "Art History",
+    "location": "Room 307",
+    "enrollment_limit": 20,
+    "fee": 180
+  }
+]
