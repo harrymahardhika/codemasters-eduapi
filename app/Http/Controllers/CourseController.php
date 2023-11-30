@@ -14,10 +14,15 @@ class CourseController extends Controller
     public function index(Request $request): JsonResponse
     {
         $courses = Course::when($request->filled('search'), function ($query) use ($request) {
-            $query->where('name', 'like', '%'.$request->search.'%')
-                ->orWhere('email', 'like', '%'.$request->search.'%')
-                ->orWhere('phone_number', 'like', '%'.$request->search.'%')
-                ->orWhere('enroll_number', 'like', '%'.$request->search.'%');
+            $query->where('title', 'like', '%'.$request->search.'%')
+                ->orWhere('description', 'like', '%'.$request->search.'%')
+                ->orWhere('code', 'like', '%'.$request->search.'%')
+                ->orWhere('credits', 'like', '%'.$request->search.'%')
+                ->orWhere('instructor', 'like', '%'.$request->search.'%')
+                ->orWhere('department', 'like', '%'.$request->search.'%')
+                ->orWhere('location', 'like', '%'.$request->search.'%')
+                ->orWhere('enrollment_limit', 'like', '%'.$request->search.'%')
+                ->orWhere('fee', 'like', '%'.$request->search.'%');
         })
             ->paginate();
 
