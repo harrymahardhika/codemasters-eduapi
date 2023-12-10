@@ -11,14 +11,17 @@ use Illuminate\Support\Facades\Storage;
 
 class SaveStudent extends Action
 {
+    /**
+     * @param UploadedFile|array<int,UploadedFile>|null $image
+     */
     public function __construct(
         private readonly Student $student,
         private readonly StudentData $data,
-        private readonly ?UploadedFile $image = null,
+        private readonly UploadedFile|array|null $image = null,
     ) {
     }
 
-    public function handle()
+    public function handle(): Student
     {
         $this->student->fill([
             'name' => $this->data->name,
@@ -32,10 +35,12 @@ class SaveStudent extends Action
                 Storage::delete('public/'.$this->student->image);
             }
 
-            $filepath = Storage::putFile('public', $this->image);
+            $filepath = (string) Storage::putFile('public', $this->image);
             $this->student->image = str_replace('public/', '', $filepath);
         }
 
         $this->student->save();
+
+        return $this->student;
     }
 }

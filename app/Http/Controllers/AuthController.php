@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\AuthenticationException;
 use App\Exceptions\JsonResponseException;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,10 @@ class AuthController extends Controller
 {
     protected string $tokenName = 'personal_access_token';
 
-    public function __invoke(Request $request)
+    /**
+     * @throws JsonResponseException
+     */
+    public function __invoke(Request $request): JsonResponse
     {
         $credentials = $request->validate([
             'email' => ['required', 'email'],

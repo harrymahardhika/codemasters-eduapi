@@ -15,7 +15,7 @@ class SavePayment extends Action
     ) {
     }
 
-    public function handle()
+    public function handle(): Payment
     {
         $this->payment->fill([
             'schedule' => $this->data->schedule,
@@ -28,5 +28,7 @@ class SavePayment extends Action
         }
 
         $this->payment->save();
+
+        return $this->payment;
     }
 }

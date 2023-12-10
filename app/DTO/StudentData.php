@@ -12,6 +12,9 @@ use Spatie\LaravelData\Lazy;
 
 class StudentData extends Data
 {
+    /**
+     * @param DataCollection<int,PaymentData>|Lazy|null $payments
+     */
     public function __construct(
         public ?int $id,
         public string $name,

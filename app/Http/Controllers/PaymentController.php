@@ -17,13 +17,13 @@ class PaymentController extends Controller
     {
         $payments = Payment::with('student')
             ->when($request->filled('search'), function ($query) use ($request) {
-                $query->where('schedule', 'ilike', '%'.$request->search.'%')
-                    ->orWhere('amount', 'ilike', '%'.$request->search.'%')
-                    ->orWhere('payment_date', 'ilike', '%'.$request->search.'%')
-                    ->orWhere('number', 'ilike', '%'.$request->search.'%')
+                $query->where('schedule', 'ilike', '%'.$request->input('search').'%')
+                    ->orWhere('amount', 'ilike', '%'.$request->input('search').'%')
+                    ->orWhere('payment_date', 'ilike', '%'.$request->input('search').'%')
+                    ->orWhere('number', 'ilike', '%'.$request->input('search').'%')
                     ->orWhereHas('student', function ($query) use ($request) {
-                        $query->where('name', 'ilike', '%'.$request->search.'%')
-                            ->orWhere('email', 'ilike', '%'.$request->search.'%');
+                        $query->where('name', 'ilike', '%'.$request->input('search').'%')
+                            ->orWhere('email', 'ilike', '%'.$request->input('search').'%');
                     });
             })
             ->paginate();
@@ -66,6 +66,9 @@ class PaymentController extends Controller
         ]);
     }
 
+    /**
+     * @throws JsonResponseException
+     */
     public function destroy(Payment $payment): JsonResponse
     {
         try {
@@ -82,6 +85,9 @@ class PaymentController extends Controller
         }
     }
 
+    /**
+     * @return array<string, string>
+     */
     private function getValidationRules(): array
     {
         return [

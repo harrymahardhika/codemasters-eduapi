@@ -16,10 +16,10 @@ class StudentController extends Controller
     public function index(Request $request): JsonResponse
     {
         $students = Student::when($request->filled('search'), function ($query) use ($request) {
-            $query->where('name', 'like', '%'.$request->search.'%')
-                ->orWhere('email', 'like', '%'.$request->search.'%')
-                ->orWhere('phone_number', 'like', '%'.$request->search.'%')
-                ->orWhere('enroll_number', 'like', '%'.$request->search.'%');
+            $query->where('name', 'like', '%'.$request->input('search').'%')
+                ->orWhere('email', 'like', '%'.$request->input('search').'%')
+                ->orWhere('phone_number', 'like', '%'.$request->input('search').'%')
+                ->orWhere('enroll_number', 'like', '%'.$request->input('search').'%');
         })
             ->paginate();
 
@@ -33,6 +33,9 @@ class StudentController extends Controller
         return $this->sendJsonResponse(StudentData::from($student)->include('payments'));
     }
 
+    /**
+     * @throws JsonResponseException
+     */
     public function store(Request $request): JsonResponse
     {
         $request->validate([
@@ -57,6 +60,9 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * @throws JsonResponseException
+     */
     public function update(Request $request, Student $student): JsonResponse
     {
         $request->validate([
@@ -81,6 +87,9 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * @throws JsonResponseException
+     */
     public function destroy(Student $student): JsonResponse
     {
         try {

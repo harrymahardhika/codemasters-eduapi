@@ -10,5 +10,8 @@ abstract class Action
 {
     use Dispatchable;
 
+    /**
+     * @return mixed|void
+     */
     abstract public function handle();
 }
